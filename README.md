@@ -13,5 +13,7 @@ APIs request:
 - Get All
 
 Front:
+
 Install http-server with npm install http-server -g
+
 Run the command line http-server in directory src/view and access localhost:8080 or 127.0.0.1:8080 to load the web page.
