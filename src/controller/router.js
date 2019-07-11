@@ -40,7 +40,7 @@ router.delete('/deleteID', async (req, res) => {
     const { _id } = req.body;
     try{
         if(await Emp.findOne({ _id })){
-            const del = await Emp.findByIdAndDelete(req.body);
+            await Emp.findByIdAndDelete(req.body);
             return res.status(200).send({ success: 'Employee deleted' });
         }
         return res.status(400).send({ error: 'Employee not found' });
@@ -51,7 +51,7 @@ router.delete('/deleteID', async (req, res) => {
 
 router.delete('/deleteAll', async (req, res) => {
     try{
-        const del = await Emp.remove(req.body);
+        const del = await Emp.deleteMany(req.body);
 
         return res.status(200).send({ success: 'Employees deleted' });
     } catch (err) {

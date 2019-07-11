@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+</head>
+<body>
+    <h1 class="text-center title-1"> Register </h1>
+    <form onsubmit="save()">
+        <p>Name:<input id="name" type="text" name="name" /></p>
+        <p>Email:<input id="email" type="text" name="email" /></p>
+        <p>Department:<input id="department" type="text" name="department" /></p>
+        <p><button type="submit">Done</button></p>
+    </form>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+<script>
+    function save(){
+        const param = JSON.stringify({
+            name: document.getElementById('name').value,
+            email: document.getElementById('email').value,
+            department: document.getElementById('department').value
+        })
+
+        const url = "http://192.168.0.108:4321/auth/register"
+
+        const config = {
+            headers: {'Content-Type': 'application/json'}
+        }
+
+        axios.post(url, param, config)
+        .then((response) => {
+            alert("OK, Employee registered")
+        })
+        .catch((error) => {
+            alert("Employee already exist or failed request")
+        })
+    }
+</script>
+</html>
